@@ -5,6 +5,41 @@
 var WHATSAPP_CARITO = "https://wa.link/jcqgoy";
 var GOOGLE_FORM_CMG = "https://docs.google.com/forms/d/1qn0Akol0jr1I7ZzGUtHgxbKY06JtZkj2tK_64F3_KWQ/viewform";
 
+/* Formulario de leads del quiz — cada respuesta se guarda aquí automáticamente */
+var LEADS_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSdUC0Usrg7be6xy09Z22h62yxCGlgYp01vreucC4z8V4a9C7w/formResponse";
+var LEADS_FORM_ENTRIES = { name: "entry.2005620554", contact: "entry.1045781291" };
+
+function submitLeadToGoogleForm(name, contact){
+  try{
+    var iframe = document.getElementById("hidden_lead_iframe");
+    if(!iframe){
+      iframe = document.createElement("iframe");
+      iframe.name = "hidden_lead_iframe";
+      iframe.id = "hidden_lead_iframe";
+      iframe.style.display = "none";
+      document.body.appendChild(iframe);
+    }
+    var form = document.createElement("form");
+    form.action = LEADS_FORM_ACTION;
+    form.method = "POST";
+    form.target = "hidden_lead_iframe";
+    form.style.display = "none";
+
+    function addField(fieldName, value){
+      var input = document.createElement("input");
+      input.type = "hidden";
+      input.name = fieldName;
+      input.value = value;
+      form.appendChild(input);
+    }
+    addField(LEADS_FORM_ENTRIES.name, name);
+    addField(LEADS_FORM_ENTRIES.contact, contact);
+
+    document.body.appendChild(form);
+    form.submit();
+    setTimeout(function(){ if(form.parentNode) form.parentNode.removeChild(form); }, 1000);
+  }catch(e){ console.warn("[Quiz CMG] No se pudo guardar el lead en Google Form", e); }
+}
 /* ---------- PREGUNTAS ----------
    Cada pregunta tiene 5 opciones (A-D mapean a un perfil, E es neutra y no suma). */
 var QUESTIONS = [
@@ -262,6 +297,7 @@ function initLeadForm(){
   form.addEventListener("submit", function(e){
     e.preventDefault();
     if(submitBtn.disabled) return;
+    submitLeadToGoogleForm(nameInput.value.trim(), contactInput.value.trim());
     renderResult();
     show("screen-result");
   });
