@@ -1,6 +1,9 @@
-/* Service Worker — Quiz Autosabotaje CMG (estructura plana, sin subcarpetas) */
+/* Service Worker — Quiz Autosabotaje CMG (estructura plana, sin subcarpetas)
+   Estrategia: network-first para HTML/JS (siempre intenta traer la versión más nueva
+   primero), con caché como respaldo solo si no hay conexión. Así, cada actualización
+   de main.js llega a los usuarios de inmediato en vez de quedar "atascada" en caché. */
 
-var CACHE_NAME = "cmg-quiz-v2-flat";
+var CACHE_NAME = "cmg-quiz-v3-networkfirst";
 var ASSETS = [
   "./",
   "./index.html",
@@ -31,12 +34,12 @@ self.addEventListener("activate", function(event){
 self.addEventListener("fetch", function(event){
   if(event.request.method !== "GET") return;
   event.respondWith(
-    caches.match(event.request).then(function(cached){
-      return cached || fetch(event.request).then(function(response){
-        var copy = response.clone();
-        caches.open(CACHE_NAME).then(function(cache){ cache.put(event.request, copy); });
-        return response;
-      }).catch(function(){ return cached; });
+    fetch(event.request).then(function(response){
+      var copy = response.clone();
+      caches.open(CACHE_NAME).then(function(cache){ cache.put(event.request, copy); });
+      return response;
+    }).catch(function(){
+      return caches.match(event.request);
     })
   );
 });
