@@ -1,0 +1,16 @@
+{
+  "name": "Quiz Autosabotaje CMG — Carito Meneses",
+  "short_name": "Quiz CMG",
+  "description": "Descubre tu patrón de autosabotaje con el método CMG® — Calma · Mejora · Guía.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#FAF6EF",
+  "theme_color": "#FAF6EF",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>¿Qué patrón de autosabotaje te frena? | Quiz CMG — Carito Meneses</title>
+<meta name="description" content="Descubre en 3 minutos qué patrón de autosabotaje está frenando tu crecimiento personal y financiero. Quiz gratuito del método CMG® · Calma · Mejora · Guía.">
+<meta name="theme-color" content="#FAF6EF">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <!-- ============ INTRO ============ -->
+  <section class="screen active" id="screen-intro">
+    <div class="wrap">
+      <p class="brand-signature">Calma · Mejora · Guía</p>
+      <img src="logo.png" alt="Mindfulness y Bienestar Emocional — Carito Meneses" class="logo-img">
+
+      <span class="intro-eyebrow">Quiz gratuito · Método CMG®</span>
+      <h1>¿Qué patrón de autosabotaje te está frenando?</h1>
+      <p class="lead">10 preguntas, 3 minutos. Descubre qué mecanismo inconsciente aparece cada vez que estás por dar el siguiente paso — y qué hacer con él.</p>
+
+      <ul class="intro-points">
+        <li>100% enfocado en tu proceso, sin juicios</li>
+        <li>Resultado personalizado con tu perfil dominante</li>
+        <li>Recomendación práctica para empezar a soltarlo</li>
+      </ul>
+
+      <button class="btn btn-primary" id="start-btn">Quiero descubrir mi patrón →</button>
+      <p class="lead-note">Gratuito · Sin necesidad de cámara ni micrófono</p>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="screen" id="screen-quiz">
+    <div class="wrap">
+      <div class="progress-label" id="progress-label">0% completado</div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <span class="q-number" id="q-number">Pregunta 1 de 10</span>
+      <h2 class="q-text" id="q-text"></h2>
+      <div class="options" id="options"></div>
+      <div class="q-nav">
+        <button class="q-back" id="q-back-btn">← Anterior</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LEAD CAPTURE ============ -->
+  <section class="screen" id="screen-lead">
+    <div class="wrap">
+      <span class="intro-eyebrow">Ya casi está</span>
+      <h2 style="text-align:center;">Tu resultado está listo</h2>
+      <p class="lead">Dinos cómo contactarte y te mostramos de inmediato tu perfil de autosabotaje, con una recomendación práctica para empezar a soltarlo.</p>
+      <form class="lead-form" id="lead-form">
+        <div class="field">
+          <label for="lead-name">Tu nombre</label>
+          <input type="text" id="lead-name" placeholder="¿Cómo te llamas?" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="lead-contact">WhatsApp o correo</label>
+          <input type="text" id="lead-contact" placeholder="Para enviarte tu resultado" autocomplete="tel" required>
+        </div>
+        <button type="submit" class="btn btn-gold" id="lead-submit" disabled>Ver mi resultado →</button>
+      </form>
+      <p class="lead-note">Tus datos solo se usan para acompañarte en tu proceso — nunca se comparten con terceros.</p>
+    </div>
+  </section>
+
+  <!-- ============ RESULTADO ============ -->
+  <section class="screen" id="screen-result">
+    <div class="wrap">
+      <span class="result-badge">Tu perfil de autosabotaje</span>
+      <h2 class="result-title" id="result-title"></h2>
+      <p class="result-sub" id="result-sub"></p>
+      <p class="result-desc" id="result-desc"></p>
+
+      <div class="result-box">
+        <h4>Por dónde empezar a soltarlo</h4>
+        <ul id="result-points"></ul>
+      </div>
+
+      <div class="brand-divider">Calma · Mejora · Guía</div>
+
+      <p class="lead" style="text-align:center;">Este patrón no se transforma solo con información — se transforma acompañada. En <strong>Del Caos a la Calma</strong>, mi mentoría grupal de 6 semanas, trabajamos exactamente esto: reconocer, soltar, integrar y florecer.</p>
+
+      <div class="result-ctas">
+        <a href="#" class="btn btn-gold" id="result-whatsapp-btn" target="_blank" rel="noopener">Quiero aplicar a CMG →</a>
+        <a href="https://docs.google.com/forms/d/1qn0Akol0jr1I7ZzGUtHgxbKY06JtZkj2tK_64F3_KWQ/viewform" target="_blank" rel="noopener" class="btn btn-outline">Aplicar por formulario</a>
+        <button class="btn-outline" id="retake-btn" style="background:none;border:none;color:var(--gray);font-size:.85rem;cursor:pointer;">Volver a hacer el quiz</button>
+      </div>
+      <p class="result-share">Abraza el presente, ahí es donde florece tu bienestar.</p>
+    </div>
+  </section>
+
+  <p class="mini-footer">© 2026 CaritoCMG · Método CMG® — Calma · Mejora · Guía</p>
+</div>
+
+<script defer src="main.js"></script>
+</body>
+</html>
